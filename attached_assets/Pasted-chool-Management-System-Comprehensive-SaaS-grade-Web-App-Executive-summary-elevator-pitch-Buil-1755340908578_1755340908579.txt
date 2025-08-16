@@ -1,0 +1,387 @@
+chool Management System (Comprehensive SaaS-grade Web App)
+
+Executive summary (elevator pitch):
+Build a secure, scalable, multi-tenant School Management System (SMS) that streamlines academic operations — student/teacher portals, fee collection, performance profiling, scoreboards, notifications, teacher ranking via student reviews, admin dashboards, and analytics. Deliver a responsive SPA + RESTful backend, role-based access control, and modular microservices-ready architecture suitable for deployment to cloud (AWS/Azure/GCP).
+
+1. Objectives & Success Metrics
+
+Primary objective: Replace manual administrative workflows with an integrated digital platform to reduce administrative overhead by ≥60% within 6 months of launch.
+
+KPIs: time-to-grade-publish, fee-collection rate, student login adoption %, average NPS for teachers, system uptime ≥99.9%, API latency <200ms P95.
+
+Business goals: support multi-school onboarding, recurring payments, audit trails, and exportable compliance reports (CSV, PDF).
+
+2. Target Users & Roles
+
+Super Admin (SaaS owner) — manage schools, tenants, billing, global configs.
+
+School Admin / Principal — full school-level config, users, classes, fee structures, reports.
+
+Accountant / Finance — fee management, invoices, receipts, ledgers.
+
+Teacher — roster, grade submission, class announcements, view feedback and rankings.
+
+Student — view profile, grades, schedule, fee status, submit feedback.
+
+Parent — view child performance, pay fees, receive notifications.
+
+Support / Auditor — view logs, export data, audit trails (read-only).
+
+3. Scope (In-Scope / Out-of-Scope)
+
+In-scope (MVP+):
+
+User management, RBAC (roles & permissions)
+
+Student & teacher profiles
+
+Class & section management, timetable
+
+Attendance (student & teacher)
+
+Grading & scoreboards; multi-term gradebooks
+
+Performance profiles: auto-calculated KPIs, progress graphs
+
+Fee collection: invoicing, payment gateway integration (Stripe / Razorpay / PayPal), partial payments, concessions
+
+Notifications: email, SMS, in-app push (web push)
+
+Teacher ranking: anonymous student reviews, moderation, aggregation
+
+Notifications & circulars (school-wide / class / individual)
+
+Reports & exports (academic, financial, attendance)
+
+Audit logs, backups, basic analytics dashboard
+
+Responsive UI (desktop & mobile)
+
+Multi-language (i18n) basic support
+
+Out-of-scope (phase 2+):
+
+Learning Management System (LMS) deep features (content authoring)
+
+Video conferencing integrations
+
+Full ERP (payroll, procurement) — optional integrations only
+
+4. Recommended Tech Stack (scalable, enterprise-ready)
+
+Frontend: React (TypeScript), React Router, Redux/ Zustand, Tailwind CSS (or Material UI)
+
+Backend: Node.js (TypeScript) with NestJS / Express or Python (FastAPI) — REST + optional GraphQL for complex queries
+
+Auth: JWT + refresh tokens, OAuth2 optional, role-based middleware
+
+Database: PostgreSQL (relational), Redis (cache & session), Elasticsearch (search & analytics, optional)
+
+Payments: Stripe / Razorpay SDK & webhooks
+
+Notifications: Twilio (SMS) or local SMS gateway; SendGrid/Mailgun (email); Web Push (VAPID)
+
+Hosting/Infra: Docker + Kubernetes / ECS; CI/CD (GitHub Actions / GitLab CI); S3-compatible object storage
+
+Monitoring: Prometheus + Grafana or Datadog; Sentry for error tracking
+
+Storage: Backups to object storage with encryption at rest
+
+CI/CD & IaC: Terraform / Pulumi for infra; GitOps workflows
+
+Testing: Jest + React Testing Library (frontend), pytest or jest for backend, Cypress for E2E
+
+5. System Architecture (high level)
+
+Multi-tenant architecture with tenant isolation (schema-per-tenant or tenant_id filter)
+
+API Gateway -> Auth Service -> App Services (User, Academic, Finance, Notification, Reporting)
+
+Event-driven pieces: payment webhooks, notification queue (RabbitMQ / SQS), background worker for recalculations and reports
+
+Audit log service and central logging
+
+6. Data Model (core entities)
+
+User (id, name, email, phone, role(s), avatar, status, last_login)
+
+School (id, name, address, timezone, configs)
+
+Student (id, user_id, admission_no, class_id, section_id, dob, parent_contact, photo)
+
+Teacher (id, user_id, employee_no, subjects[], hire_date)
+
+Class (id, grade, section, year)
+
+Subject (id, name, code)
+
+Timetable (class_id, subject_id, teacher_id, day, start_time, end_time)
+
+Attendance (user_id, date, type, recorded_by)
+
+Exam (id, name, date_range, weightage)
+
+Grade (student_id, exam_id, subject_id, marks_obtained, max_marks, grade_letter)
+
+FeeStructure (school_id, class_id, fee_components[])
+
+Invoice (id, student_id, invoice_items[], total, due_date, status, payment_ref)
+
+Payment (id, invoice_id, payment_method, amount, status, txn_id, timestamp)
+
+Notification (id, target_type, message, medium, delivered, read_status)
+
+TeacherReview (student_id, teacher_id, rating, comments, anonymous_flag, timestamp)
+
+AuditLog (actor_id, action, resource, before, after, timestamp)
+
+7. Functional Requirements (detailed)
+Student/Teacher/Parent Portals
+
+Login via email/phone + OTP/password; role-appropriate dashboards
+
+Students/Parents: view fee balance, download invoices, initiate payments
+
+Teachers: class roster, submit grades and attendance, view ranking & feedback
+
+Admin: create classes, subjects, assign teachers, manage terms/exams
+
+Fee Management
+
+Flexible fee components (tuition, transport, lab, exam, misc)
+
+Recurring fees, auto-generated invoices per term/month
+
+Partial payments, concessions, late fees
+
+Payment gateway integration with secure webhook handling and idempotency
+
+Financial ledger & reconciliation, downloadable receipts (PDF)
+
+Academic Management
+
+Customizable grading schemes (marks, grade points)
+
+Bulk grade upload (CSV) + per-student override
+
+Scoreboard: per-class, per-subject, term-wise leaderboards
+
+Performance profile: trend charts, percentile vs class, heatmaps for weak areas
+
+Teacher Ranking & Reviews
+
+Anonymous student reviews with safeguards (min age/consent)
+
+Moderation queue for flagged content; sentiment scoring for comments
+
+Aggregated teacher index (weighted average + recency decay)
+
+Publish/opt-in visibility for rankings
+
+Notifications & Communication
+
+Create and schedule circulars; push to class/group/individual
+
+Read receipts & analytics (open rate)
+
+Two-way communication threads between teacher-parent with escalation rules
+
+Security & Compliance
+
+Password policy, account lockout, MFA (optional)
+
+Audit logs for sensitive actions (grade changes, fee write-offs)
+
+Data privacy features (GDPR/FERPA considerations): data export/delete, consent capture
+
+Role-based access with least privilege
+
+8. API Contract — Example endpoints (REST)
+
+POST /api/v1/auth/login → returns JWT
+
+POST /api/v1/auth/refresh
+
+GET /api/v1/schools/:id/dashboard (admin)
+
+POST /api/v1/schools (super-admin)
+
+GET /api/v1/classes / POST /api/v1/classes
+
+GET /api/v1/students/:id/profile / PUT /api/v1/students/:id
+
+POST /api/v1/attendance (bulk)
+
+POST /api/v1/exams / POST /api/v1/grades/bulk-upload
+
+GET /api/v1/scoreboard?class=10&term=2025
+
+POST /api/v1/fees/invoices → generate invoice
+
+POST /api/v1/payments/checkout → initiate payment
+
+POST /api/v1/payments/webhook → handle payment gateway callbacks (idempotent)
+
+POST /api/v1/notifications/send
+
+POST /api/v1/reviews/teacher
+
+GET /api/v1/reports/attendance?from=&to=&class=
+
+GET /api/v1/audit/logs
+
+Include OpenAPI v3 spec as deliverable.
+
+9. UX & UI Requirements (high-level)
+
+Responsive SPA; mobile-first design for parents/students
+
+Clean dashboard with KPI cards, charts (trend lines), quick actions
+
+Accessibility (WCAG AA) compliance for color contrast and keyboard nav
+
+Role-based navigation; context-sensitive help & tooltips
+
+File uploads (profile photos, CSV grade imports) with progress UI
+
+Confirmations for destructive actions (grade override, delete)
+
+10. Data Integrity, Concurrency & Business Rules
+
+Transactions for fee/payment & grade finalization
+
+Soft-delete with retention windows
+
+Concurrency control for grade edits (optimistic locking)
+
+Immutability for published reports (versioning)
+
+Idempotency keys for external webhooks (payments)
+
+11. Security & Privacy Controls
+
+TLS everywhere, HSTS, CSP
+
+Encrypt sensitive fields at rest (PII)
+
+Role-based access + attribute-based controls for row-level filtering
+
+Rate limiting per API key / IP
+
+Penetration testing before production launch
+
+Privacy controls: data export, consent logs, data erasure flows
+
+12. Testing Strategy
+
+Unit tests: 80% coverage target for core modules
+
+Integration tests for payment flows, webhook handling
+
+E2E tests via Cypress: student login -> view grades -> pay fees
+
+Load testing for concurrency: simulate 10k concurrent users, target P95 latency <400ms
+
+Accessibility & cross-browser testing
+
+13. Deployment & Operational Plan
+
+Environments: dev/stage/prod with infra-as-code
+
+Blue/green or canary releases for zero-downtime deploys
+
+Backups: daily DB snapshots + transactional WAL shipping; test restores monthly
+
+Monitoring & alerts: SLO/SLA definitions with PagerDuty integration
+
+DR plan: RTO ≤ 4 hours, RPO ≤ 1 hour
+
+14. Analytics & Reporting
+
+Built-in dashboards: attendance trends, fee collections, teacher performance index
+
+Export to CSV/PDF and schedule periodic emailed reports
+
+Integrations: optional Power BI / Looker connectors for advanced analytics
+
+15. Acceptance Criteria (sample)
+
+Role-based login works for all roles and enforces permissions.
+
+Admin can create a term, exam, assign teachers and publish grades; published grades are visible to students.
+
+Fee invoice generation + payment via gateway completes and records payment with webhook reconciliation.
+
+Students can submit reviews; admin can moderate and aggregate teacher rankings.
+
+All critical flows covered by automated tests and security audit passed.
+
+16. Deliverables (MVP)
+
+Functional frontend (React SPA) & backend APIs (auth, user, academic, finance, notifications)
+
+Database schema & migration scripts
+
+Payment integration with at least one gateway and webhook handler
+
+CI pipeline + IaC templates for dev & prod
+
+Test suite + Postman / OpenAPI docs
+
+Admin manual + basic end-user documentation
+
+Demo data and seeders for quick onboarding
+
+17. Suggested Roadmap & Milestones (12–16 weeks)
+
+Week 0–1: Detailed requirements, wireframes, data model sign-off
+
+Week 2–4: Core auth, user CRUD, class/subject management, basic UI skeleton
+
+Week 5–7: Attendance, exams, gradebook, scoreboards
+
+Week 8–9: Fee module + payment gateway + invoices
+
+Week 10: Notifications, teacher reviews & ranking
+
+Week 11: Reporting, exports, auditing
+
+Week 12: Integration testing, security hardening
+
+Week 13: UAT & bugfixes
+
+Week 14: Production launch & hypercare
+
+18. Non-functional Requirements
+
+99.9% uptime SLA (hosting dependent)
+
+P95 API latency < 200ms under normal load
+
+Multi-tenant isolation and horizontal scalability
+
+Easy onboarding: <10 minutes to create a new school and seed initial classes
+
+19. Risk & Mitigation
+
+Payment disputes: implement idempotency & reconciliation; retain full audit trail.
+
+Privacy breaches: encrypt PII and limit data export; implement MFA for admin accounts.
+
+Adoption risk: provide onboarding flows, guided tours, and training docs.
+
+20. Sample Prompt for Development Team / AI Contractor
+
+Build a multi-tenant School Management System (SaaS) per the attached product spec. Deliver a React + TypeScript SPA and a TypeScript Node.js backend with PostgreSQL. Implement RBAC, student/teacher/parent portals, attendance, gradebook, scoreboards, fee management with Stripe/Razorpay integration, notification engine (email & SMS), teacher review & ranking (anonymous, moderated), and reporting exports. Provide OpenAPI v3 documentation, unit/integration/E2E tests, migration scripts, Dockerized deployment, Terraform templates for infra, and a 2-week hypercare support window post-launch. Meet performance targets (P95 < 200ms), 99.9% uptime, and include security hardening and privacy compliance features (GDPR/FERPA). Deliver in 3 milestones: MVP (core flows), Finance & Notifications, Reporting & Scalability. Provide time & cost estimates, acceptance tests, and demo seed data.
+
+21. Attachments & Artifacts to Request from Stakeholder
+
+Current process docs (fee lifecycle, refund policies)
+
+Sample CSVs for student/teacher data
+
+Branding assets, preferred color scheme & logo
+
+List of required third-party integrations (payment provider, SMS provider)
+
+Regulatory constraints (local data residency, mandatory retention)
