@@ -119,13 +119,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/students", requireAuth, async (req, res) => {
     try {
       const { classId } = req.query;
-      let students;
+      let students: any[] = [];
       
       if (classId) {
         students = await storage.getStudentsByClass(classId as string);
-      } else {
-        // Return empty array for now, implement pagination later
-        students = [];
       }
       
       res.json(students);

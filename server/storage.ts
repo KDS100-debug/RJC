@@ -155,10 +155,21 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getGradesByClass(classId: string): Promise<Grade[]> {
-    return await db.select().from(grades)
+    const result = await db.select({
+      id: grades.id,
+      studentId: grades.studentId,
+      examId: grades.examId,
+      marksObtained: grades.marksObtained,
+      gradeLetter: grades.gradeLetter,
+      remarks: grades.remarks,
+      submittedBy: grades.submittedBy,
+      createdAt: grades.createdAt
+    }).from(grades)
       .innerJoin(students, eq(grades.studentId, students.id))
       .where(eq(students.classId, classId))
       .orderBy(desc(grades.createdAt));
+    
+    return result;
   }
 
   async createGrade(grade: InsertGrade): Promise<Grade> {
@@ -176,15 +187,9 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getAttendanceByStudent(studentId: string, startDate?: Date, endDate?: Date): Promise<Attendance[]> {
-    let query = db.select().from(attendance).where(eq(attendance.studentId, studentId));
+    const query = db.select().from(attendance).where(eq(attendance.studentId, studentId));
     
-    if (startDate && endDate) {
-      query = query.where(and(
-        eq(attendance.studentId, studentId),
-        // Add date range filter here
-      ));
-    }
-    
+    // For now, just return the basic query - date filtering can be added later
     return await query.orderBy(desc(attendance.date));
   }
 

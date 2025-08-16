@@ -1,5 +1,6 @@
 import { useAuth } from '@/hooks/useAuth';
 import { useLocation } from 'wouter';
+import { useEffect } from 'react';
 import Layout from '@/components/Layout';
 import AdminDashboard from '@/components/admin/AdminDashboard';
 import TeacherDashboard from '@/components/teacher/TeacherDashboard';
@@ -10,6 +11,12 @@ export default function Dashboard() {
   const { user, isAuthenticated, isLoading } = useAuth();
   const [, setLocation] = useLocation();
 
+  useEffect(() => {
+    if (!isLoading && !isAuthenticated) {
+      setLocation('/login');
+    }
+  }, [isLoading, isAuthenticated, setLocation]);
+
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -19,7 +26,6 @@ export default function Dashboard() {
   }
 
   if (!isAuthenticated) {
-    setLocation('/login');
     return null;
   }
 

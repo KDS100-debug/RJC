@@ -23,6 +23,7 @@ interface ReviewWithTeacher extends TeacherReview {
     };
     employeeNo: string;
   };
+  isModerated: boolean;
 }
 
 interface TeacherStats {
@@ -91,7 +92,8 @@ export default function TeacherReviews() {
 
     const ratingDistribution = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
     teacherReviews.forEach(review => {
-      ratingDistribution[review.rating] = (ratingDistribution[review.rating] || 0) + 1;
+      const rating = review.rating as keyof typeof ratingDistribution;
+      ratingDistribution[rating] = (ratingDistribution[rating] || 0) + 1;
     });
 
     return {
