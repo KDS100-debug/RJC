@@ -1,0 +1,166 @@
+{
+  "source": {
+    "site_title": "Ramanujan Junior College",
+    "source_url": "https://ramanujanjuniorcollege.com/index.php",
+    "snapshot_date": "2025-08-16",
+    "source_note": "Homepage crawl - navigation, hero/principal copy, entrance exam links, news & events, About section, image refs."
+  },
+  "navigation": [
+    { "label": "Home", "href": "/", "source_node": "nav_0" },
+    { "label": "About RJC", "href": "/about", "source_node": "nav_1" },
+    { "label": "Academic", "href": "/academic", "source_node": "nav_2" },
+    { "label": "Departments", "href": "/departments", "source_node": "nav_3" },
+    { "label": "Facilities", "href": "/facilities", "source_node": "nav_4" },
+    { "label": "Results", "href": "/results", "source_node": "nav_5" },
+    { "label": "Achivments", "href": "/achievements", "source_node": "nav_6" },
+    { "label": "Photo Gallery", "href": "/gallery", "source_node": "nav_7" },
+    { "label": "Contact RJC", "href": "/contact", "source_node": "nav_8" }
+  ],
+  "pages": [
+    {
+      "slug": "/",
+      "title": "Home",
+      "source_node": "home_page",
+      "sections": [
+        {
+          "id": "hero_principal",
+          "heading": "FROM PRINCIPAL'S DESK",
+          "body_html": "<p>This prospectus is intended to give all the necessary information about our system of imparting excellent education to the sincere and devoted students wishing for a successful career and shine in today's competitive world. When a drop of water falls into a river, it has no identity, but when it falls on the leaf of a lotus, it shines like a pearl! So choose the best place where you can shine!</p>",
+          "ctas": [
+            { "label": "Read More", "href": "/about#principal" }
+          ],
+          "images": ["img_35"]
+        },
+        {
+          "id": "entrance_exams",
+          "heading": "ENTRANCE EXAMS",
+          "items": [
+            {
+              "category": "MEDICAL ENTRANCE",
+              "links": [
+                { "label": "AIPMT", "href": "http://aipmt.nic.in", "source_node": "link_11" },
+                { "label": "AIIMS", "href": "http://www.aiims.edu", "source_node": "link_12" },
+                { "label": "AFMC", "href": "http://afmc.nic.in", "source_node": "link_13" },
+                { "label": "BHU", "href": "http://www.bhu.ac.in", "source_node": "link_14" },
+                { "label": "JIPMER", "href": "http://jipmer.edu.in", "source_node": "link_15" },
+                { "label": "CMC (Ludhiana)", "href": "http://www.cmcludhiana.org", "source_node": "link_16" },
+                { "label": "CMC (Vallore)", "href": "http://www.cmch-vellore.edu", "source_node": "link_17" },
+                { "label": "MGIMS", "href": "http://www.mgims.ac.in", "source_node": "link_18" },
+                { "label": "MAHE (Manipal)", "href": "http://manipal.edu", "source_node": "link_19" },
+                { "label": "CEE (Assam)", "href": "http://www.aec.ac.in", "source_node": "link_20" }
+              ]
+            },
+            {
+              "category": "ENGINEERING ENTRANCE",
+              "links": [
+                { "label": "IIT-JEE", "href": "http://www.iitg.ac.in", "source_node": "link_21" },
+                { "label": "AIEEE", "href": "http://jeemain.nic.in", "source_node": "link_22" },
+                { "label": "NERIST", "href": "http://www.nerist.ac.in", "source_node": "link_23" },
+                { "label": "CET (Karnataka)", "href": "http://kea.kar.nic.in", "source_node": "link_24" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "news_events",
+          "heading": "NEWS & EVENTS",
+          "items": [
+            { "title": "HS FINAL RESULTS SCIENCE 2025", "href": "/news/hs-final-results-science-2025", "image_ref": "img_64", "source_node": "news_25" },
+            { "title": "HS FINAL RESULTS ARTS 2025", "href": "/news/hs-final-results-arts-2025", "image_ref": "img_65", "source_node": "news_26" },
+            { "title": "HS FINAL RESULTS COMMERCE 2025", "href": "/news/hs-final-results-commerce-2025", "image_ref": "img_66", "source_node": "news_27" },
+            { "title": "ENTRANCE EXAM 2025-26", "href": "/news/entrance-exam-2025-26", "image_ref": "img_67", "source_node": "news_28" },
+            { "title": "FORM SUBMISSION LINK FOR ENTRANCE EXAMINATION (SCIENCE) 2025 - 26", "href": "/news/entrance-form-link-science-2025-26", "image_ref": "img_68", "source_node": "news_29" },
+            { "title": "NOTICE FOR H.S 1ST YEAR ENTRANCE EXAMINATION (SCIENCE) 2025-26", "href": "/news/notice-hs-1st-year-entrance-2025-26", "source_node": "news_30" },
+            { "title": "SYLLABUS FOR H.S 1ST YEAR ENTRANCE EXAMINATION 2025", "href": "/news/entrance-syllabus-2025", "source_node": "news_31" },
+            { "title": "COMMERECE STREAM 2023", "href": "/news/commerce-stream-2023", "source_node": "news_32" }
+          ]
+        },
+        {
+          "id": "gallery_preview",
+          "heading": "Photo Gallery - preview images",
+          "image_refs": [
+            "img_36","img_37","img_38","img_39","img_40","img_41","img_42","img_43","img_44","img_45","img_46","img_47","img_48","img_49","img_50","img_51","img_52","img_53","img_54","img_55","img_56","img_57","img_58","img_59","img_60","img_61","img_62","img_63"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "/about",
+      "title": "About Our College",
+      "source_node": "about_section",
+      "body_html": "<p>Ramanujan Junior College, founded in 2005, stands true to its motto - \"Education, Development and Progress\" along with a long-cherished desire to impart quality education. The emphasis is laid on success in a competitive educational field. Its ultimate goal is to pave the way for a splendid career. Primarily the college was started as a coaching institute named Ramanujan Academy in 2003.</p><p>It is worthwhile to mention that the academy achieved immense response from the society and later on it was decided to give birth to a junior college named Ramanujan Junior College, comprising of both science and arts stream, in the year 2005. Now, Ramanujan is on a dual service - Ramanujan Junior College and Ramanujan Academy, both are co-educational.</p>",
+      "ctas": [
+        { "label": "Read More", "href": "/about#more", "source_node": "link_1" }
+      ]
+    }
+  ],
+  "assets": [
+    { "id": "img_35", "alt": null, "note": "Principal/hero image (homepage)", "source_node": "image_35" },
+    { "id": "img_36", "alt": null, "note": "Gallery image", "source_node": "image_36" },
+    { "id": "img_37", "alt": null, "note": "Gallery image", "source_node": "image_37" },
+    { "id": "img_38", "alt": null, "note": "Gallery image", "source_node": "image_38" },
+    { "id": "img_39", "alt": null, "note": "Gallery image", "source_node": "image_39" },
+    { "id": "img_40", "alt": null, "note": "Gallery image", "source_node": "image_40" },
+    { "id": "img_41", "alt": null, "note": "Gallery image", "source_node": "image_41" },
+    { "id": "img_42", "alt": null, "note": "Gallery image", "source_node": "image_42" },
+    { "id": "img_43", "alt": null, "note": "Gallery image", "source_node": "image_43" },
+    { "id": "img_44", "alt": null, "note": "Gallery image", "source_node": "image_44" },
+    { "id": "img_45", "alt": null, "note": "Gallery image", "source_node": "image_45" },
+    { "id": "img_46", "alt": null, "note": "Gallery image", "source_node": "image_46" },
+    { "id": "img_47", "alt": null, "note": "Gallery image", "source_node": "image_47" },
+    { "id": "img_48", "alt": null, "note": "Gallery image", "source_node": "image_48" },
+    { "id": "img_49", "alt": null, "note": "Gallery image", "source_node": "image_49" },
+    { "id": "img_50", "alt": null, "note": "Gallery image", "source_node": "image_50" },
+    { "id": "img_51", "alt": null, "note": "Gallery image", "source_node": "image_51" },
+    { "id": "img_52", "alt": null, "note": "Gallery image", "source_node": "image_52" },
+    { "id": "img_53", "alt": null, "note": "Gallery image", "source_node": "image_53" },
+    { "id": "img_54", "alt": null, "note": "Gallery image", "source_node": "image_54" },
+    { "id": "img_55", "alt": null, "note": "Gallery image", "source_node": "image_55" },
+    { "id": "img_56", "alt": null, "note": "Gallery image", "source_node": "image_56" },
+    { "id": "img_57", "alt": null, "note": "Gallery image", "source_node": "image_57" },
+    { "id": "img_58", "alt": null, "note": "Gallery image", "source_node": "image_58" },
+    { "id": "img_59", "alt": null, "note": "Gallery image", "source_node": "image_59" },
+    { "id": "img_60", "alt": null, "note": "Gallery image", "source_node": "image_60" },
+    { "id": "img_61", "alt": null, "note": "Gallery image", "source_node": "image_61" },
+    { "id": "img_62", "alt": null, "note": "Gallery image", "source_node": "image_62" },
+    { "id": "img_63", "alt": null, "note": "Gallery image", "source_node": "image_63" },
+    { "id": "img_64", "alt": null, "note": "News image for HS FINAL RESULTS SCIENCE 2025", "source_node": "image_64" },
+    { "id": "img_65", "alt": null, "note": "News image for HS FINAL RESULTS ARTS 2025", "source_node": "image_65" },
+    { "id": "img_66", "alt": null, "note": "News image for HS FINAL RESULTS COMMERCE 2025", "source_node": "image_66" },
+    { "id": "img_67", "alt": null, "note": "News image for ENTRANCE EXAM 2025-26", "source_node": "image_67" },
+    { "id": "img_68", "alt": null, "note": "News image for FORM SUBMISSION LINK (SCIENCE) 2025-26", "source_node": "image_68" }
+  ],
+  "content_mappings": {
+    "page_to_cms": {
+      "/": { "target_type": "Page", "target_slug": "home", "migration_notes": "map hero, news/events, entrance exam lists, gallery preview" },
+      "/about": { "target_type": "Page", "target_slug": "about", "migration_notes": "map About Our College paragraphs and principal desk link" },
+      "/news/*": { "target_type": "NewsEvent", "migration_notes": "create NewsEvent entries for each item in NEWS & EVENTS list" },
+      "/gallery/*": { "target_type": "GalleryImage", "migration_notes": "ingest gallery images as GalleryImage with altText placeholder" }
+    },
+    "assets_to_storage": {
+      "pattern": "img_*",
+      "storage_path_template": "s3://<bucket>/rjc/assets/{{id}}.jpg",
+      "migration_notes": "download original assets, create WebP/AVIF variants, populate alt text via CMS field"
+    }
+  },
+  "quality_assurance": {
+    "checks": [
+      "Content parity: verify hero/principal text matches original or has documented paraphrase permission",
+      "News links: validate linked PDF/pages exist and update target hrefs to canonical new paths",
+      "Images: ensure each asset has alt text; flag missing alt text for content editor",
+      "SEO: copy original meta title/description where present and improve where absent",
+      "Legal: confirm permission to reuse original images/text; if not granted, paraphrase/replace"
+    ],
+    "required_signoffs": [
+      "Business owner (content license)",
+      "Design owner (UI mockups)",
+      "Security (CDN / file storage config)"
+    ]
+  },
+  "next_steps": {
+    "1": "Run a full site crawler to materialize 'site-export.zip' containing content.json and assets/ using this manifest as mapping.",
+    "2": "Provision headless CMS (e.g., Strapi) with content types: Page, NewsEvent, GalleryImage, Department, Result, SiteSettings.",
+    "3": "Run import script: content.json -> CMS via CMS API, and upload assets to S3/Cloud storage.",
+    "4": "Validate migrated pages in staging and perform QA per QA checklist."
+  }
+}
