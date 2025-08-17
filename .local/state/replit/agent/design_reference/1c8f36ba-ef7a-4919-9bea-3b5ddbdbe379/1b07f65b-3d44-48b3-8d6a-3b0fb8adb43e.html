@@ -1,0 +1,1220 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SchoolPro - School Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+        }
+        
+        .sidebar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar .nav-link {
+            color: rgba(255,255,255,0.8);
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin: 4px 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .main-content {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin: 20px;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .dashboard-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .stat-card h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .table-container {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .table thead th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            font-weight: 600;
+            padding: 16px;
+        }
+        
+        .profile-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 0;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        .notification-badge {
+            background: #dc3545;
+            color: white;
+            border-radius: 50%;
+            padding: 4px 8px;
+            font-size: 0.75rem;
+            position: absolute;
+            top: -5px;
+            right: -5px;
+        }
+        
+        .grade-badge {
+            font-size: 1.1rem;
+            padding: 8px 16px;
+        }
+        
+        .fee-status {
+            border-radius: 20px;
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .role-tabs .nav-link {
+            border-radius: 25px;
+            padding: 12px 24px;
+            margin: 0 5px;
+            border: 2px solid transparent;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .role-tabs .nav-link.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .login-container {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .login-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        
+        .chart-container {
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 2px dashed #dee2e6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen (Initial View) -->
+    <div id="loginView" class="login-container">
+        <div class="login-card">
+            <div class="text-center mb-4">
+                <i class="bi bi-mortarboard-fill text-primary" style="font-size: 3rem;"></i>
+                <h2 class="mt-3 mb-1">SchoolPro</h2>
+                <p class="text-muted">School Management System</p>
+            </div>
+            
+            <form>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email" data-mock="true">
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                        <input type="password" class="form-control" id="password" placeholder="Enter your password" data-mock="true">
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="role" class="form-label">Login As</label>
+                    <select class="form-select" id="loginRole">
+                        <option value="admin">School Administrator</option>
+                        <option value="teacher">Teacher</option>
+                        <option value="student">Student</option>
+                        <option value="parent">Parent</option>
+                    </select>
+                </div>
+                
+                <button type="button" class="btn btn-primary w-100 mb-3" onclick="showDashboard()">
+                    <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
+                </button>
+                
+                <div class="text-center">
+                    <a href="#" class="text-decoration-none small">Forgot Password?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Dashboard (Hidden Initially) -->
+    <div id="dashboardView" style="display: none;">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Sidebar Navigation -->
+                <div class="col-lg-2 col-md-3 p-0">
+                    <div class="sidebar">
+                        <div class="p-4 text-center border-bottom border-light">
+                            <i class="bi bi-mortarboard-fill text-white" style="font-size: 2rem;"></i>
+                            <h5 class="text-white mt-2 mb-0">SchoolPro</h5>
+                            <small class="text-white-50" id="schoolName">Greenwood High School</small>
+                        </div>
+                        
+                        <nav class="nav flex-column p-3" id="sidebarNav">
+                            <!-- Dynamic navigation based on role -->
+                        </nav>
+                        
+                        <div class="p-3 mt-auto">
+                            <div class="d-flex align-items-center text-white-50">
+                                <!-- A professional headshot of a school administrator -->
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=64&h=64" 
+                                     alt="User Profile" class="rounded-circle me-2" width="40" height="40">
+                                <div>
+                                    <small class="d-block text-white" id="userName">John Smith</small>
+                                    <small id="userRole">Administrator</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content Area -->
+                <div class="col-lg-10 col-md-9">
+                    <div class="main-content">
+                        <!-- Header -->
+                        <div class="profile-header">
+                            <div class="container-fluid px-4">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h1 class="mb-1" id="dashboardTitle">Administrator Dashboard</h1>
+                                        <p class="mb-0 opacity-75" id="dashboardSubtitle">Welcome back! Here's what's happening at your school today.</p>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="d-flex align-items-center">
+                                            <div class="position-relative me-3">
+                                                <i class="bi bi-bell text-white" style="font-size: 1.5rem; cursor: pointer;"></i>
+                                                <span class="notification-badge">3</span>
+                                            </div>
+                                            <div class="position-relative">
+                                                <i class="bi bi-envelope text-white" style="font-size: 1.5rem; cursor: pointer;"></i>
+                                                <span class="notification-badge">7</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Role-based Content Tabs -->
+                        <div class="p-4">
+                            <ul class="nav nav-pills role-tabs mb-4 justify-content-center">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#" onclick="switchRole('admin')">Admin View</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" onclick="switchRole('teacher')">Teacher View</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" onclick="switchRole('student')">Student View</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" onclick="switchRole('parent')">Parent View</a>
+                                </li>
+                            </ul>
+
+                            <!-- Dynamic Content Area -->
+                            <div id="contentArea">
+                                <!-- Content will be loaded dynamically based on role -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Application State
+        let currentRole = 'admin';
+        let currentUser = {
+            admin: { name: 'John Smith', title: 'Administrator' },
+            teacher: { name: 'Sarah Johnson', title: 'Mathematics Teacher' },
+            student: { name: 'Alex Chen', title: 'Grade 10 Student' },
+            parent: { name: 'Michael Davis', title: 'Parent of Emma Davis' }
+        };
+
+        // Navigation configurations for each role
+        const navigationConfig = {
+            admin: [
+                { icon: 'speedometer2', text: 'Dashboard', active: true },
+                { icon: 'people', text: 'User Management' },
+                { icon: 'building', text: 'Classes & Sections' },
+                { icon: 'calendar-check', text: 'Attendance' },
+                { icon: 'graph-up', text: 'Academic Reports' },
+                { icon: 'credit-card', text: 'Fee Management' },
+                { icon: 'bell', text: 'Notifications' },
+                { icon: 'star', text: 'Teacher Reviews' },
+                { icon: 'gear', text: 'Settings' }
+            ],
+            teacher: [
+                { icon: 'speedometer2', text: 'Dashboard', active: true },
+                { icon: 'people', text: 'My Classes' },
+                { icon: 'calendar-check', text: 'Attendance' },
+                { icon: 'journal-text', text: 'Gradebook' },
+                { icon: 'trophy', text: 'Scoreboard' },
+                { icon: 'chat-dots', text: 'Messages' },
+                { icon: 'star', text: 'My Reviews' },
+                { icon: 'person', text: 'Profile' }
+            ],
+            student: [
+                { icon: 'speedometer2', text: 'Dashboard', active: true },
+                { icon: 'calendar-week', text: 'My Schedule' },
+                { icon: 'graph-up', text: 'My Grades' },
+                { icon: 'calendar-check', text: 'Attendance' },
+                { icon: 'trophy', text: 'Leaderboard' },
+                { icon: 'credit-card', text: 'Fees & Payments' },
+                { icon: 'chat-dots', text: 'Messages' },
+                { icon: 'person', text: 'Profile' }
+            ],
+            parent: [
+                { icon: 'speedometer2', text: 'Dashboard', active: true },
+                { icon: 'person', text: "Child's Profile" },
+                { icon: 'graph-up', text: 'Academic Progress' },
+                { icon: 'calendar-check', text: 'Attendance' },
+                { icon: 'credit-card', text: 'Fee Payments' },
+                { icon: 'chat-dots', text: 'Teacher Communication' },
+                { icon: 'bell', text: 'Notifications' },
+                { icon: 'gear', text: 'Settings' }
+            ]
+        };
+
+        // Show dashboard and hide login
+        function showDashboard() {
+            const selectedRole = document.getElementById('loginRole').value;
+            currentRole = selectedRole;
+            
+            document.getElementById('loginView').style.display = 'none';
+            document.getElementById('dashboardView').style.display = 'block';
+            
+            updateUserInterface();
+            loadRoleContent();
+        }
+
+        // Switch between role views
+        function switchRole(role) {
+            currentRole = role;
+            
+            // Update active tab
+            document.querySelectorAll('.role-tabs .nav-link').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            updateUserInterface();
+            loadRoleContent();
+        }
+
+        // Update UI elements based on current role
+        function updateUserInterface() {
+            const user = currentUser[currentRole];
+            const titles = {
+                admin: 'Administrator Dashboard',
+                teacher: 'Teacher Dashboard', 
+                student: 'Student Dashboard',
+                parent: 'Parent Dashboard'
+            };
+            
+            const subtitles = {
+                admin: "Welcome back! Here's what's happening at your school today.",
+                teacher: 'Ready to inspire young minds? Check your classes and assignments.',
+                student: 'Track your progress and stay on top of your studies.',
+                parent: "Stay connected with your child's educational journey."
+            };
+
+            document.getElementById('userName').textContent = user.name;
+            document.getElementById('userRole').textContent = user.title;
+            document.getElementById('dashboardTitle').textContent = titles[currentRole];
+            document.getElementById('dashboardSubtitle').textContent = subtitles[currentRole];
+            
+            updateNavigation();
+        }
+
+        // Update sidebar navigation
+        function updateNavigation() {
+            const nav = document.getElementById('sidebarNav');
+            const navItems = navigationConfig[currentRole];
+            
+            nav.innerHTML = navItems.map(item => `
+                <a href="#" class="nav-link ${item.active ? 'active' : ''}">
+                    <i class="bi bi-${item.icon} me-2"></i>${item.text}
+                </a>
+            `).join('');
+        }
+
+        // Load role-specific content
+        function loadRoleContent() {
+            const contentArea = document.getElementById('contentArea');
+            
+            switch(currentRole) {
+                case 'admin':
+                    contentArea.innerHTML = getAdminContent();
+                    break;
+                case 'teacher':
+                    contentArea.innerHTML = getTeacherContent();
+                    break;
+                case 'student':
+                    contentArea.innerHTML = getStudentContent();
+                    break;
+                case 'parent':
+                    contentArea.innerHTML = getParentContent();
+                    break;
+            }
+        }
+
+        // Admin Dashboard Content
+        function getAdminContent() {
+            return `
+                <!-- KPI Statistics -->
+                <div class="row mb-4">
+                    <div class="col-lg-3 col-md-6 mb-3">
+                        <div class="stat-card">
+                            <i class="bi bi-people-fill mb-2" style="font-size: 2rem;"></i>
+                            <h3>1,247</h3>
+                            <p class="mb-0">Total Students</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-3">
+                        <div class="stat-card" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">
+                            <i class="bi bi-person-badge-fill mb-2" style="font-size: 2rem;"></i>
+                            <h3>89</h3>
+                            <p class="mb-0">Teaching Staff</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-3">
+                        <div class="stat-card" style="background: linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%);">
+                            <i class="bi bi-building mb-2" style="font-size: 2rem;"></i>
+                            <h3>42</h3>
+                            <p class="mb-0">Classes</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-3">
+                        <div class="stat-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <i class="bi bi-cash-coin mb-2" style="font-size: 2rem;"></i>
+                            <h3>94.2%</h3>
+                            <p class="mb-0">Fee Collection</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Management Sections -->
+                <div class="row">
+                    <div class="col-lg-8 mb-4">
+                        <div class="dashboard-card">
+                            <h5 class="mb-4"><i class="bi bi-graph-up text-primary me-2"></i>School Performance Overview</h5>
+                            <div class="chart-container">
+                                <div class="text-center text-muted">
+                                    <i class="bi bi-bar-chart-line" style="font-size: 3rem;"></i>
+                                    <p class="mt-2">Performance Analytics Chart<br><small>Integration with Chart.js or similar</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <div class="dashboard-card">
+                            <h5 class="mb-4"><i class="bi bi-exclamation-triangle text-warning me-2"></i>Recent Alerts</h5>
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item border-0 px-0">
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-clock text-warning me-3"></i>
+                                        <div>
+                                            <h6 class="mb-1">Fee Payment Overdue</h6>
+                                            <small class="text-muted">15 students have pending fees</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item border-0 px-0">
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-person-x text-danger me-3"></i>
+                                        <div>
+                                            <h6 class="mb-1">Low Attendance Alert</h6>
+                                            <small class="text-muted">Grade 9-B attendance below 75%</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item border-0 px-0">
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-star text-info me-3"></i>
+                                        <div>
+                                            <h6 class="mb-1">New Teacher Review</h6>
+                                            <small class="text-muted">5 pending reviews to moderate</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions & Recent Activity -->
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="dashboard-card">
+                            <h5 class="mb-4"><i class="bi bi-lightning text-primary me-2"></i>Quick Actions</h5>
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <button class="btn btn-outline-primary w-100" data-implementation="Modal for new student registration">
+                                        <i class="bi bi-person-plus mb-2 d-block"></i>Add Student
+                                    </button>
+                                </div>
+                                <div class="col-6">
+                                    <button class="btn btn-outline-success w-100" data-implementation="Modal for class creation">
+                                        <i class="bi bi-plus-circle mb-2 d-block"></i>Create Class
+                                    </button>
+                                </div>
+                                <div class="col-6">
+                                    <button class="btn btn-outline-info w-100" data-implementation="Navigate to fee management">
+                                        <i class="bi bi-credit-card mb-2 d-block"></i>Fee Structure
+                                    </button>
+                                </div>
+                                <div class="col-6">
+                                    <button class="btn btn-outline-warning w-100" data-implementation="Generate and download reports">
+                                        <i class="bi bi-file-earmark-text mb-2 d-block"></i>Generate Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="dashboard-card">
+                            <h5 class="mb-4"><i class="bi bi-clock-history text-primary me-2"></i>Recent Activity</h5>
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item border-0 px-0 py-2">
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-success rounded-circle p-2 me-3">
+                                            <i class="bi bi-check text-white"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Grade 10 Math grades published</h6>
+                                            <small class="text-muted">2 hours ago</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item border-0 px-0 py-2">
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-primary rounded-circle p-2 me-3">
+                                            <i class="bi bi-person text-white"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">New teacher registered: Ms. Wilson</h6>
+                                            <small class="text-muted">4 hours ago</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item border-0 px-0 py-2">
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-warning rounded-circle p-2 me-3">
+                                            <i class="bi bi-cash text-white"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Fee payment received: $2,450</h6>
+                                            <small class="text-muted">6 hours ago</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Teacher Dashboard Content
+        function getTeacherContent() {
+            return `
+                <!-- Teacher KPIs -->
+                <div class="row mb-4">
+                    <div class="col-lg-3 col-md-6 mb-3">
+                        <div class="stat-card">
+                            <i class="bi bi-people-fill mb-2" style="font-size: 2rem;"></i>
+                            <h3>156</h3>
+                            <p class="mb-0">My Students</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-3">
+                        <div class="stat-card" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">
+                            <i class="bi bi-building mb-2" style="font-size: 2rem;"></i>
+                            <h3>6</h3>
+                            <p class="mb-0">Classes</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-3">
+                        <div class="stat-card" style="background: linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%);">
+                            <i class="bi bi-star-fill mb-2" style="font-size: 2rem;"></i>
+                            <h3>4.7</h3>
+                            <p class="mb-0">Rating</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-3">
+                        <div class="stat-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <i class="bi bi-calendar-check mb-2" style="font-size: 2rem;"></i>
+                            <h3>92%</h3>
+                            <p class="mb-0">Attendance</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Today's Schedule & Gradebook -->
+                <div class="row">
+                    <div class="col-lg-8 mb-4">
+                        <div class="dashboard-card">
+                            <h5 class="mb-4"><i class="bi bi-calendar-week text-primary me-2"></i>Today's Schedule</h5>
+                            <div class="table-container">
+                                <table class="table table-hover mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Time</th>
+                                            <th>Class</th>
+                                            <th>Subject</th>
+                                            <th>Room</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr data-mock="true">
+                                            <td>09:00 - 09:45</td>
+                                            <td>Grade 10-A</td>
+                                            <td>Mathematics</td>
+                                            <td>Room 201</td>
+                                            <td><button class="btn btn-sm btn-outline-primary" data-implementation="Mark attendance">Take Attendance</button></td>
+                                        </tr>
+                                        <tr data-mock="true">
+                                            <td>10:00 - 10:45</td>
+                                            <td>Grade 9-B</td>
+                                            <td>Mathematics</td>
+                                            <td>Room 201</td>
+                                            <td><button class="btn btn-sm btn-outline-primary" data-implementation="Mark attendance">Take Attendance</button></td>
+                                        </tr>
+                                        <tr data-mock="true">
+                                            <td>11:30 - 12:15</td>
+                                            <td>Grade 10-C</td>
+                                            <td>Mathematics</td>
+                                            <td>Room 201</td>
+                                            <td><button class="btn btn-sm btn-outline-success" data-implementation="Submit grades">Submit Grades</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <div class="dashboard-card">
+                            <h5 class="mb-4"><i class="bi bi-star text-warning me-2"></i>Recent Reviews</h5>
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item border-0 px-0" data-mock="true">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div>
+                                            <h6 class="mb-1">Anonymous Student</h6>
+                                            <p class="mb-1 small">"Great teacher! Makes math fun and easy to understand."</p>
+                                            <small class="text-muted">Grade 10-A • 2 days ago</small>
+                                        </div>
+                                        <span class="badge bg-warning text-dark">★ 5.0</span>
+                                    </div>
+                                </div>
+                                <div class="list-group-item border-0 px-0" data-mock="true">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div>
+                                            <h6 class="mb-1">Anonymous Student</h6>
+                                            <p class="mb-1 small">"Always patient and helpful during class."</p>
+                                            <small class="text-muted">Grade 9-B • 5 days ago</small>
+                                        </div>
+                                        <span class="badge bg-warning text-dark">★ 4.8</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Grade Entry -->
+                <div class="row">
+                    <div class="col-lg-12 mb-4">
+                        <div class="dashboard-card">
+                            <h5 class="mb-4"><i class="bi bi-journal-text text-primary me-2"></i>Quick Grade Entry - Mathematics Test</h5>
+                            <div class="table-container">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Student Name</th>
+                                            <th>Roll No.</th>
+                                            <th>Marks Obtained</th>
+                                            <th>Max Marks</th>
+                                            <th>Grade</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- @MAP: students.map(student => ( -->
+                                        <tr data-mock="true">
+                                            <td>Emily Johnson</td>
+                                            <td>2023001</td>
+                                            <td><input type="number" class="form-control form-control-sm" value="85" max="100" data-implementation="Grade input with validation"></td>
+                                            <td>100</td>
+                                            <td><span class="badge grade-badge bg-success">A</span></td>
+                                            <td><i class="bi bi-check-circle text-success"></i></td>
+                                        </tr>
+                                        <tr data-mock="true">
+                                            <td>Michael Chen</td>
+                                            <td>2023002</td>
+                                            <td><input type="number" class="form-control form-control-sm" value="92" max="100" data-implementation="Grade input with validation"></td>
+                                            <td>100</td>
+                                            <td><span class="badge grade-badge bg-success">A+</span></td>
+                                            <td><i class="bi bi-check-circle text-success"></i></td>
+                                        </tr>
+                                        <tr data-mock="true">
+                                            <td>Sarah Williams</td>
+                                            <td>2023003</td>
+                                            <td><input type="number" class="form-control form-control-sm" placeholder="Enter marks" data-implementation="Grade input with validation"></td>
+                                            <td>100</td>
+                                            <td><span class="badge grade-badge bg-secondary">-</span></td>
+                                            <td><i class="bi bi-clock text-warning"></i></td>
+                                        </tr>
+                                        <!-- @END_MAP )) -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="mt-3">
+                                <button class="btn btn-primary" data-implementation="Submit all grades">
+                                    <i class="bi bi-save me-2"></i>Save Grades
+                                </button>
+                                <button class="btn btn-outline-secondary ms-2" data-implementation="Upload CSV grades">
+                                    <i class="bi bi-upload me-2"></i>Bulk Upload CSV
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Student Dashboard Content
+        function getStudentContent() {
+            return `
+                <!-- Student Performance Overview -->
+                <div class="row mb-4">
+                    <div class="col-lg-3 col-md-6 mb-3">
+                        <div class="stat-card">
+                            <i class="bi bi-graph-up mb-2" style="font-size: 2rem;"></i>
+                            <h3>85.6%</h3>
+                            <p class="mb-0">Overall Average</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-3">
+                        <div class="stat-card" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">
+                            <i class="bi bi-calendar-check mb-2" style="font-size: 2rem;"></i>
+                            <h3>94%</h3>
+                            <p class="mb-0">Attendance</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-3">
+                        <div class="stat-card" style="background: linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%);">
+                            <i class="bi bi-trophy mb-2" style="font-size: 2rem;"></i>
+                            <h3>7th</h3>
+                            <p class="mb-0">Class Rank</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-3">
+                        <div class="stat-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <i class="bi bi-credit-card mb-2" style="font-size: 2rem;"></i>
+                            <h3>Paid</h3>
+                            <p class="mb-0">Fee Status</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Grades & Schedule -->
+                <div class="row">
+                    <div class="col-lg-8 mb-4">
+                        <div class="dashboard-card">
+                            <h5 class="mb-4"><i class="bi bi-journal-text text-primary me-2"></i>Recent Grades</h5>
+                            <div class="table-container">
+                                <table class="table table-hover mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Subject</th>
+                                            <th>Test/Exam</th>
+                                            <th>Marks</th>
+                                            <th>Grade</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr data-mock="true">
+                                            <td>Mathematics</td>
+                                            <td>Unit Test 3</td>
+                                            <td>85/100</td>
+                                            <td><span class="badge grade-badge bg-success">A</span></td>
+                                            <td>Dec 15, 2024</td>
+                                        </tr>
+                                        <tr data-mock="true">
+                                            <td>Physics</td>
+                                            <td>Lab Report</td>
+                                            <td>92/100</td>
+                                            <td><span class="badge grade-badge bg-success">A+</span></td>
+                                            <td>Dec 12, 2024</td>
+                                        </tr>
+                                        <tr data-mock="true">
+                                            <td>English</td>
+                                            <td>Essay Assignment</td>
+                                            <td>78/100</td>
+                                            <td><span class="badge grade-badge bg-warning">B+</span></td>
+                                            <td>Dec 10, 2024</td>
+                                        </tr>
+                                        <tr data-mock="true">
+                                            <td>Chemistry</td>
+                                            <td>Mid-term Exam</td>
+                                            <td>88/100</td>
+                                            <td><span class="badge grade-badge bg-success">A</span></td>
+                                            <td>Dec 8, 2024</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <div class="dashboard-card">
+                            <h5 class="mb-4"><i class="bi bi-calendar-week text-primary me-2"></i>Today's Classes</h5>
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item border-0 px-0" data-mock="true">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">Mathematics</h6>
+                                            <small class="text-muted">09:00 - 09:45 • Room 201</small>
+                                        </div>
+                                        <span class="badge bg-success">Completed</span>
+                                    </div>
+                                </div>
+                                <div class="list-group-item border-0 px-0" data-mock="true">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">Physics</h6>
+                                            <small class="text-muted">10:00 - 10:45 • Lab 1</small>
+                                        </div>
+                                        <span class="badge bg-primary">In Progress</span>
+                                    </div>
+                                </div>
+                                <div class="list-group-item border-0 px-0" data-mock="true">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">English</h6>
+                                            <small class="text-muted">11:30 - 12:15 • Room 105</small>
+                                        </div>
+                                        <span class="badge bg-light text-dark">Upcoming</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academic Progress & Assignments -->
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="dashboard-card">
+                            <h5 class="mb-4"><i class="bi bi-graph-up text-primary me-2"></i>Subject Performance</h5>
+                            <div class="chart-container">
+                                <div class="text-center text-muted">
+                                    <i class="bi bi-pie-chart" style="font-size: 3rem;"></i>
+                                    <p class="mt-2">Subject-wise Performance Chart<br><small>Radar chart showing strengths/weaknesses</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="dashboard-card">
+                            <h5 class="mb-4"><i class="bi bi-list-task text-primary me-2"></i>Pending Assignments</h5>
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item border-0 px-0" data-mock="true">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div>
+                                            <h6 class="mb-1">Chemistry Lab Report</h6>
+                                            <small class="text-muted">Due: Dec 20, 2024</small>
+                                        </div>
+                                        <span class="badge bg-warning">2 days left</span>
+                                    </div>
+                                </div>
+                                <div class="list-group-item border-0 px-0" data-mock="true">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div>
+                                            <h6 class="mb-1">History Essay</h6>
+                                            <small class="text-muted">Due: Dec 25, 2024</small>
+                                        </div>
+                                        <span class="badge bg-success">1 week left</span>
+                                    </div>
+                                </div>
+                                <div class="list-group-item border-0 px-0" data-mock="true">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div>
+                                            <h6 class="mb-1">Math Problem Set</h6>
+                                            <small class="text-muted">Due: Dec 22, 2024</small>
+                                        </div>
+                                        <span class="badge bg-info">4 days left</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Teacher Review Section -->
+                <div class="row">
+                    <div class="col-lg-12 mb-4">
+                        <div class="dashboard-card">
+                            <h5 class="mb-4"><i class="bi bi-star text-warning me-2"></i>Submit Teacher Review</h5>
+                            <form data-implementation="Anonymous teacher review submission">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="teacherSelect" class="form-label">Select Teacher</label>
+                                        <select class="form-select" id="teacherSelect" data-mock="true">
+                                            <option value="">Choose a teacher...</option>
+                                            <option value="1">Ms. Sarah Johnson - Mathematics</option>
+                                            <option value="2">Mr. David Wilson - Physics</option>
+                                            <option value="3">Ms. Emily Brown - English</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="rating" class="form-label">Rating</label>
+                                        <select class="form-select" id="rating" data-mock="true">
+                                            <option value="">Select rating...</option>
+                                            <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+                                            <option value="4">⭐⭐⭐⭐ Good</option>
+                                            <option value="3">⭐⭐⭐ Average</option>
+                                            <option value="2">⭐⭐ Below Average</option>
+                                            <option value="1">⭐ Poor</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="reviewComment" class="form-label">Comments (Optional)</label>
+                                    <textarea class="form-control" id="reviewComment" rows="3" 
+                                            placeholder="Share your thoughts about this teacher..." data-mock="true"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary" data-implementation="Submit anonymous review">
+                                    <i class="bi bi-send me-2"></i>Submit Review
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Parent Dashboard Content
+        function getParentContent() {
+            return `
+                <!-- Child's Overview -->
+                <div class="row mb-4">
+                    <div class="col-lg-3 col-md-6 mb-3">
+                        <div class="stat-card">
+                            <i class="bi bi-graph-up mb-2" style="font-size: 2rem;"></i>
+                            <h3>87.3%</h3>
+                            <p class="mb-0">Overall Average</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-3">
+                        <div class="stat-card" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">
+                            <i class="bi bi-calendar-check mb-2" style="font-size: 2rem;"></i>
+                            <h3>96%</h3>
+                            <p class="mb-0">Attendance</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-3">
+                        <div class="stat-card" style="background: linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%);">
+                            <i class="bi bi-trophy mb-2" style="font-size: 2rem;"></i>
+                            <h3>5th</h3>
+                            <p class="mb-0">Class Rank</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-3">
+                        <div class="stat-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <i class="bi bi-credit-card mb-2" style="font-size: 2rem;"></i>
+                            <h3>$125</h3>
+                            <p class="mb-0">Due Amount</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Child Profile & Fee Management -->
+                <div class="row">
+                    <div class="col-lg-4 mb-4">
+                        <div class="dashboard-card text-center">
+                            <h5 class="mb-4"><i class="bi bi-person text-primary me-2"></i>Child Profile</h5>
+                            <!-- A young student smiling in school uniform -->
+                            <img src="https://images.unsplash.com/photo-1544717302-de2939b7ef71?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200" 
+                                 alt="Student profile picture" class="rounded-circle mb-3" width="120" height="120">
+                            <h6 data-mock="true">Emma Davis</h6>
+                            <p class="text-muted mb-2">Grade 10-A • Roll No: 2023045</p>
+                            <p class="text-muted mb-3">Date of Birth: March 15, 2009</p>
+                            <button class="btn btn-outline-primary btn-sm" data-implementation="Edit child profile">
+                                <i class="bi bi-pencil me-1"></i>Edit Profile
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 mb-4">
+                        <div class="dashboard-card">
+                            <h5 class="mb-4"><i class="bi bi-credit-card text-primary me-2"></i>Fee Management</h5>
+                            <div class="table-container">
+                                <table class="table table-hover mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Fee Type</th>
+                                            <th>Amount</th>
+                                            <th>Due Date</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr data-mock="true">
+                                            <td>Tuition Fee</td>
+                                            <td>$500.00</td>
+                                            <td>Dec 31, 2024</td>
+                                            <td><span class="fee-status bg-success text-white">Paid</span></td>
+                                            <td><button class="btn btn-sm btn-outline-info" data-implementation="Download receipt">Receipt</button></td>
+                                        </tr>
+                                        <tr data-mock="true">
+                                            <td>Laboratory Fee</td>
+                                            <td>$75.00</td>
+                                            <td>Dec 20, 2024</td>
+                                            <td><span class="fee-status bg-warning text-dark">Pending</span></td>
+                                            <td><button class="btn btn-sm btn-primary" data-implementation="Initiate payment">Pay Now</button></td>
+                                        </tr>
+                                        <tr data-mock="true">
+                                            <td>Transport Fee</td>
+                                            <td>$50.00</td>
+                                            <td>Dec 25, 2024</td>
+                                            <td><span class="fee-status bg-warning text-dark">Pending</span></td>
+                                            <td><button class="btn btn-sm btn-primary" data-implementation="Initiate payment">Pay Now</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="mt-3 text-end">
+                                <p class="mb-2"><strong>Total Pending: $125.00</strong></p>
+                                <button class="btn btn-success" data-implementation="Pay all pending fees">
+                                    <i class="bi bi-credit-card me-2"></i>Pay All Pending
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academic Progress & Communication -->
+                <div class="row">
+                    <div class="col-lg-8 mb-4">
+                        <div class="dashboard-card">
+                            <h5 class="mb-4"><i class="bi bi-graph-up text-primary me-2"></i>Academic Progress Trend</h5>
+                            <div class="chart-container">
+                                <div class="text-center text-muted">
+                                    <i class="bi bi-graph-up-arrow" style="font-size: 3rem;"></i>
+                                    <p class="mt-2">Progress Trend Chart<br><small>Shows improvement over terms</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <div class="dashboard-card">
+                            <h5 class="mb-4"><i class="bi bi-chat-dots text-primary me-2"></i>Recent Messages</h5>
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item border-0 px-0" data-mock="true">
+                                    <div class="d-flex align-items-start">
+                                        <div class="bg-primary rounded-circle p-2 me-3">
+                                            <i class="bi bi-person text-white"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Ms. Johnson</h6>
+                                            <p class="mb-1 small">Emma showed great improvement in today's math test.</p>
+                                            <small class="text-muted">2 hours ago</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item border-0 px-0" data-mock="true">
+                                    <div class="d-flex align-items-start">
+                                        <div class="bg-success rounded-circle p-2 me-3">
+                                            <i class="bi bi-building text-white"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">School Administration</h6>
+                                            <p class="mb-1 small">Parent-teacher meeting scheduled for Dec 22.</p>
+                                            <small class="text-muted">1 day ago</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline-primary btn-sm w-100 mt-3" data-implementation="Open messaging interface">
+                                <i class="bi bi-chat-dots me-2"></i>View All Messages
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Grades & Upcoming Events -->
+                <div class="row">
+                    <div class="col-lg-8 mb-4">
+                        <div class="dashboard-card">
+                            <h5 class="mb-4"><i class="bi bi-journal-text text-primary me-2"></i>Recent Grades</h5>
+                            <div class="table-container">
+                                <table class="table table-hover mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Subject</th>
+                                            <th>Test/Exam</th>
+                                            <th>Marks</th>
+                                            <th>Grade</th>
+                                            <th>Teacher Remarks</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr data-mock="true">
+                                            <td>Mathematics</td>
+                                            <td>Unit Test 3</td>
+                                            <td>87/100</td>
+                                            <td><span class="badge grade-badge bg-success">A</span></td>
+                                            <td><small class="text-success">Excellent improvement!</small></td>
+                                        </tr>
+                                        <tr data-mock="true">
+                                            <td>Physics</td>
+                                            <td>Lab Report</td>
+                                            <td>94/100</td>
+                                            <td><span class="badge grade-badge bg-success">A+</span></td>
+                                            <td><small class="text-success">Outstanding work</small></td>
+                                        </tr>
+                                        <tr data-mock="true">
+                                            <td>English</td>
+                                            <td>Essay Assignment</td>
+                                            <td>82/100</td>
+                                            <td><span class="badge grade-badge bg-success">A-</span></td>
+                                            <td><small class="text-info">Good creativity</small></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <div class="dashboard-card">
+                            <h5 class="mb-4"><i class="bi bi-calendar-event text-primary me-2"></i>Upcoming Events</h5>
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item border-0 px-0" data-mock="true">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <h6 class="mb-1">Parent-Teacher Meeting</h6>
+                                            <small class="text-muted">Dec 22, 2024 at 2:00 PM</small>
+                                        </div>
+                                        <span class="badge bg-primary">2 days</span>
+                                    </div>
+                                </div>
+                                <div class="list-group-item border-0 px-0" data-mock="true">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <h6 class="mb-1">Annual Sports Day</h6>
+                                            <small class="text-muted">Jan 15, 2025</small>
+                                        </div>
+                                        <span class="badge bg-success">3 weeks</span>
+                                    </div>
+                                </div>
+                                <div class="list-group-item border-0 px-0" data-mock="true">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <h6 class="mb-1">Final Exams Begin</h6>
+                                            <small class="text-muted">Feb 1, 2025</small>
+                                        </div>
+                                        <span class="badge bg-warning text-dark">5 weeks</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Initialize the application
+        (function() {
+            // TODO: Implement proper authentication flow
+            // TODO: Add error handling for failed login attempts
+            // TODO: Implement session management and auto-logout
+            
+            // Set default role content
+            currentRole = 'admin';
+            console.log('SchoolPro Management System initialized');
+        })();
+    </script>
+</body>
+</html>
