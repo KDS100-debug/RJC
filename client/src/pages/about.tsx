@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { GraduationCap, Target, Users, Award } from "lucide-react";
+import logoPath from "@assets/logo_1755410486904.jpg";
 
 export default function About() {
   const objectives = [
@@ -52,6 +53,14 @@ export default function About() {
       <section className="bg-gradient-to-r from-green-600 to-blue-600 text-white py-16">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
+            <div className="flex justify-center mb-6">
+              <img 
+                src={logoPath} 
+                alt="Ramanujan Junior College Logo" 
+                className="h-20 w-20 rounded-full object-cover shadow-lg"
+                data-testid="img-about-logo"
+              />
+            </div>
             <h1 className="text-4xl font-bold mb-6" data-testid="heading-about">
               About Ramanujan Junior College
             </h1>

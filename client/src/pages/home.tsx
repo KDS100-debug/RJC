@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ChevronRight, User, Phone, Mail } from "lucide-react";
+import logoPath from "@assets/logo_1755410486904.jpg";
 
 export default function Home() {
   const [showFullMessage, setShowFullMessage] = useState(false);
@@ -43,6 +44,14 @@ Request to parents/guardians:
       <section className="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-20">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
+            <div className="flex justify-center mb-8">
+              <img 
+                src={logoPath} 
+                alt="Ramanujan Junior College Logo" 
+                className="h-24 w-24 rounded-full object-cover shadow-lg"
+                data-testid="img-hero-logo"
+              />
+            </div>
             <h1 className="text-5xl font-bold mb-6" data-testid="heading-hero">
               Ramanujan Junior College
             </h1>

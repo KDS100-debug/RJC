@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, X, GraduationCap } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import logoPath from "@assets/logo_1755410486904.jpg";
 
 const navigationItems = [
   { name: "Home", path: "/" },
@@ -32,11 +33,21 @@ export default function Navigation() {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2" data-testid="link-logo">
-            <GraduationCap className="h-8 w-8 text-blue-600" />
-            <span className="font-bold text-lg text-gray-900 dark:text-white">
-              Ramanujan Junior College
-            </span>
+          <Link href="/" className="flex items-center gap-3" data-testid="link-logo">
+            <img 
+              src={logoPath} 
+              alt="Ramanujan Junior College Logo" 
+              className="h-10 w-10 rounded-full object-cover"
+              data-testid="img-logo"
+            />
+            <div className="flex flex-col">
+              <span className="font-bold text-lg text-gray-900 dark:text-white leading-tight">
+                Ramanujan Junior College
+              </span>
+              <span className="text-xs text-gray-600 dark:text-gray-400">
+                Education, Development and Progress
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -73,8 +84,12 @@ export default function Navigation() {
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <div className="flex flex-col space-y-4 mt-8">
-                  <div className="flex items-center gap-2 mb-6">
-                    <GraduationCap className="h-6 w-6 text-blue-600" />
+                  <div className="flex items-center gap-3 mb-6">
+                    <img 
+                      src={logoPath} 
+                      alt="RJC Logo" 
+                      className="h-8 w-8 rounded-full object-cover"
+                    />
                     <span className="font-bold text-gray-900 dark:text-white">
                       RJC
                     </span>
