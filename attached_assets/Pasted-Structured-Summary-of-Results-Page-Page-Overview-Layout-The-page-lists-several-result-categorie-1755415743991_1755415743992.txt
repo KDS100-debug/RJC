@@ -1,0 +1,97 @@
+Structured Summary of “Results” Page
+Page Overview & Layout
+
+The page lists several result categories by year and stream, including:
+
+H.S 2nd Year Final – Arts – 2016
+
+H.S 1st Year Final – Science – 2016
+
+H.S 1st Year Final – Arts – 2016
+
+H.S Final Results – 2015
+
+Results for earlier years (2015, 2014, 2013, 2012, 2011) categorized by stream (Science / Arts) with Rank Holder lists, student names, percentages, letter subjects, and more 
+ramanujanjuniorcollege.com
+.
+
+Sample Detail (for one section)
+H.S 1st Year Final – Science – 2015
+
+Structured table of rank holders:
+
+1st: RJC Roll No. 352 – Manjit Bora – 91.80%
+
+2nd: RJC Roll No. 504 – Nayanika Hazarika – 91.40%
+
+3rd (tied): RJC Roll No. 266 – Ankur Jyoti Bora – 90.80%
+
+3rd: RJC Roll No. 393 – Raktim Saikia – 90.80%
+
+4th: RJC Roll No. 354 – Mayurpran Bora – 90.60%
+
+5th: … and so on, listing the top 12+ positions with corresponding roll numbers, names, and percentages 
+ramanujanjuniorcollege.com
+.
+
+Additional “A Grade,” “B Grade,” and “D Grade” listings include roll numbers and subject abbreviations for categorized performance metrics 
+ramanujanjuniorcollege.com
+.
+
+Overall Content Organization
+
+Final result headings by year and stream.
+
+Rank holder tables (position, roll no., name, percentage).
+
+Subject-wise grade categorizations.
+
+Progression from recent (2016) to earlier years (2011).
+
+Prompt Template: Recreating the “Results” Page
+
+Here’s a corporate-tone, structured prompt aimed at designers, developers, or AI tools—crafted with precision to ensure the page is recreated with full fidelity:
+
+Subject: Development of “Results” Page Section — Ramanujan Junior College
+
+Objective:
+Deliver a high-precision replication of the “Results” section of the website, reflecting both layout hierarchy and detailed academic data.
+
+Scope:
+- Recreate each results block per year and stream (e.g., H.S 2nd Year Final — Arts — 2016, etc.).
+- Include:
+  - Section headers (Year + Stream).
+  - Tabular rank-holder breakdown:
+    - Position (e.g., 1st, 2nd)
+    - Roll Number
+    - Student Name
+    - Percentage
+  - For select years, additional “Grade” categorizations (A, B, D) with roll numbers and subject abbreviations.
+
+Design Specifications:
+- Utilize structured components/cards for each block with consistent header styling.
+- Tables should be semantically marked up and responsive.
+- Grade-specific roll-number listings may be shown either inline or as expandable subsections.
+
+Content Sample:
+
+H.S 1st Year Final – Science – 2015
+Rank	Roll No.	Name	Percentage
+1st	352	Manjit Bora	91.80%
+2nd	504	Nayanika Hazarika	91.40%
+3rd	266	Ankur Jyoti Bora	90.80%
+3rd	393	Raktim Saikia	90.80%
+…	…	…	…
+
+A Grade Roll Nos.: 0252 (ENG, ALTE, CHEM, MATH), …
+B Grade Roll Nos.: 0251, 0253, …
+D Grade Roll Nos.: 0449 (ENGL), …
+
+
+Deliverables:
+- Clean, responsive HTML/CSS (with optional JS) templates for each results section.
+- Structured HTML tables for clarity and accessibility.
+- Data modularity: ability to update student entries without altering layout.
+- Source of data: as summarized in the brief-style breakdown above.
+
+Please proceed with precision, consistent styling, and modular structuring. Let me know if you'd like custom adjustments for CMS integration or data automation capabilities.
