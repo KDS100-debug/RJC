@@ -1,78 +1,383 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Trophy, Medal, Star, Award, TrendingUp, Users } from "lucide-react";
+import { Trophy, Star, Award, Medal, Zap, BookOpen, Target, Users } from "lucide-react";
+
+const achievementsData = [
+  {
+    category: "IISER & Competitive Exams 2025",
+    icon: Trophy,
+    color: "text-yellow-600 dark:text-yellow-400",
+    achievements: [
+      {
+        title: "IISER Aptitude Test (IAT) 2025",
+        description: "Successfully qualified for prestigious Indian Institute of Science Education and Research",
+        student: "Multiple Students",
+        year: "2025",
+        highlight: true
+      },
+      {
+        title: "JEE Main 2025",
+        description: "Outstanding performance in Joint Entrance Examination",
+        student: "Science Stream Students",
+        year: "2025",
+        highlight: false
+      }
+    ]
+  },
+  {
+    category: "Olympiad Excellence 2024-25",
+    icon: Medal,
+    color: "text-blue-600 dark:text-blue-400",
+    achievements: [
+      {
+        title: "Physics Olympiad",
+        description: "All-Assam Physics Olympiad Center Topper (Classes IX–X)",
+        student: "ARJUNAV BORAH",
+        year: "2024-25",
+        highlight: true
+      },
+      {
+        title: "Chemistry Olympiad",
+        description: "Regional level excellence in Chemistry competition",
+        student: "RJC Students",
+        year: "2024-25",
+        highlight: false
+      },
+      {
+        title: "NSO, IEO & IMO 2023",
+        description: "National Science, English & Mathematics Olympiads",
+        student: "Multiple Students",
+        year: "2023",
+        highlight: false
+      }
+    ]
+  },
+  {
+    category: "IIT Qualifications 2024",
+    icon: Star,
+    color: "text-green-600 dark:text-green-400",
+    achievements: [
+      {
+        title: "IIT ISM Dhanbad",
+        description: "Successfully qualified and admitted to prestigious IIT",
+        student: "AREEJEET ROY",
+        year: "2024",
+        highlight: true
+      },
+      {
+        title: "IIT BHU Varanasi",
+        description: "Secured admission to Indian Institute of Technology",
+        student: "BIBEK BARMAN",
+        year: "2024",
+        highlight: true
+      },
+      {
+        title: "IIT Bombay",
+        description: "Achieved admission to India's premier technical institute",
+        student: "SAMIRAN DAS",
+        year: "2024",
+        highlight: true
+      },
+      {
+        title: "IIT Guwahati",
+        description: "Successfully qualified for IIT Guwahati admission",
+        student: "JOUDI WARISA",
+        year: "2024",
+        highlight: true
+      }
+    ]
+  },
+  {
+    category: "Medical & Engineering 2024",
+    icon: BookOpen,
+    color: "text-purple-600 dark:text-purple-400",
+    achievements: [
+      {
+        title: "NEET 2024",
+        description: "Excellent performance in National Eligibility cum Entrance Test",
+        student: "Medical Aspirants",
+        year: "2024",
+        highlight: false
+      },
+      {
+        title: "Engineering 2024",
+        description: "Outstanding results in various engineering entrance exams",
+        student: "Engineering Students",
+        year: "2024",
+        highlight: false
+      },
+      {
+        title: "JEE Main 2024",
+        description: "Exceptional performance in Joint Entrance Examination",
+        student: "Science Stream",
+        year: "2024",
+        highlight: false
+      }
+    ]
+  },
+  {
+    category: "Board Examination Excellence",
+    icon: Award,
+    color: "text-red-600 dark:text-red-400",
+    achievements: [
+      {
+        title: "HSLC Final Examination Result 2024",
+        description: "Secured 3rd Rank with outstanding 98% marks",
+        student: "DEVASHREE KASHYAP",
+        year: "2024",
+        highlight: true
+      },
+      {
+        title: "HS Final Examination Result 2024",
+        description: "Exceptional performance in Higher Secondary examinations",
+        student: "Class XII Students",
+        year: "2024",
+        highlight: false
+      }
+    ]
+  },
+  {
+    category: "Prestigious Recognitions",
+    icon: Zap,
+    color: "text-orange-600 dark:text-orange-400",
+    achievements: [
+      {
+        title: "UPSC AIR 5 (2022-23)",
+        description: "All India Rank 5 in Union Public Service Commission",
+        student: "DR. MAYUR HAZARIKA",
+        year: "2022-23",
+        highlight: true
+      },
+      {
+        title: "Dr. Ambedkar National Merit Award",
+        description: "Prestigious national recognition for academic excellence",
+        student: "MINTU HAZARIKA, MRIGANKA DAS, SANGITA BAISHYA",
+        year: "2024",
+        highlight: true
+      },
+      {
+        title: "Mukhya Mantrir Bigyan Pratibha Sandhan",
+        description: "State government mentoring programme recognition",
+        student: "Selected Students",
+        year: "2024",
+        highlight: false
+      }
+    ]
+  },
+  {
+    category: "Competitions & Cultural Events",
+    icon: Users,
+    color: "text-teal-600 dark:text-teal-400",
+    achievements: [
+      {
+        title: "78th Independence Day Quiz Competition",
+        description: "2nd Position in inter-school quiz competition",
+        student: "ANURANAN SARMAH & SNIGDHA PARAN SAIKIA",
+        year: "2024",
+        details: "Class XI",
+        highlight: false
+      },
+      {
+        title: "Science Model Competition 2024",
+        description: "1st Position at Nagaon District Level",
+        student: "DUKE BHUYAN BORA & BIKASH BARUAH",
+        year: "2024",
+        details: "Class X-A",
+        highlight: true
+      },
+      {
+        title: "Science Model Competition 2024",
+        description: "2nd Position at Nagaon District Level",
+        student: "BARNA JYOTI SUT & RUPJYOTI SAIKIA",
+        year: "2024",
+        details: "Class X-C",
+        highlight: false
+      },
+      {
+        title: "Dhai Akhar Letter Writing Competition 2023",
+        description: "All-Assam 1st Prize in state-level writing competition",
+        student: "ANURANAN SARMAH",
+        year: "2023",
+        highlight: true
+      }
+    ]
+  },
+  {
+    category: "Previous Years' Excellence",
+    icon: Target,
+    color: "text-indigo-600 dark:text-indigo-400",
+    achievements: [
+      {
+        title: "IIT 2023",
+        description: "Successfully qualified for IIST (Trivandrum)",
+        student: "RISHAB UPADHYAY",
+        year: "2023",
+        highlight: true
+      },
+      {
+        title: "Mock Test 2023-24",
+        description: "Outstanding performance in preparatory examinations",
+        student: "Multiple Students",
+        year: "2023-24",
+        highlight: false
+      }
+    ]
+  }
+];
 
 export default function Achievements() {
-  const majorAchievements = [
-    {
-      year: "2024",
-      title: "Excellence in NEET Results",
-      description: "76.2% of our students qualified for NEET, with 15 students securing ranks below 10,000",
-      icon: <Medal className="h-6 w-6" />,
-      category: "Academic"
-    },
-    {
-      year: "2024", 
-      title: "JEE Success Story",
-      description: "28 out of 45 students qualified for JEE Main, with 8 students advancing to JEE Advanced",
-      icon: <Trophy className="h-6 w-6" />,
-      category: "Academic"
-    },
-    {
-      year: "2023",
-      title: "State-level Recognition",
-      description: "Recognized as one of the top 10 junior colleges in Assam for academic excellence",
-      icon: <Star className="h-6 w-6" />,
-      category: "Recognition"
-    },
-    {
-      year: "2023",
-      title: "100% Result Achievement",
-      description: "Achieved 100% pass rate in H.S. final examination for Arts stream students",
-      icon: <Award className="h-6 w-6" />,
-      category: "Academic"
-    }
-  ];
+  return (
+    <div className="min-h-screen bg-white dark:bg-gray-900">
+      {/* Header */}
+      <section className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-4xl mx-auto">
+            <h1 className="text-4xl font-bold mb-6" data-testid="heading-achievements">
+              Student Achievements
+            </h1>
+            <p className="text-xl" data-testid="text-achievements-subtitle">
+              Celebrating Excellence and Success Stories
+            </p>
+          </div>
+        </div>
+      </section>
 
-  const scholarshipWinners = [
-    {
-      name: "Arjun Sharma",
-      year: "2024",
-      scholarship: "Phulai Bora Memorial Prize",
-      amount: "₹10,000",
-      achievement: "Rank 1 in H.S. Final Examination"
-    },
-    {
-      name: "Priya Devi", 
-      year: "2024",
-      scholarship: "Merit Scholarship", 
-      amount: "₹10,000",
-      achievement: "85% in H.S. Final Examination"
-    },
-    {
-      name: "Rohit Kumar",
-      year: "2024", 
-      scholarship: "Dr. Satyendra Talukdar Award",
-      amount: "₹25,000",
-      achievement: "Medical entrance with financial need"
-    },
-    {
-      name: "Anita Boro",
-      year: "2023",
-      scholarship: "Government Merit Scholarship",
-      amount: "₹10,000", 
-      achievement: "SC Category Excellence"
-    }
-  ];
+      {/* Achievements Grid */}
+      <section className="py-16 bg-gray-50 dark:bg-gray-900">
+        <div className="container mx-auto px-4">
+          <div className="space-y-8 max-w-7xl mx-auto">
+            {achievementsData.map((category, categoryIndex) => {
+              const IconComponent = category.icon;
+              return (
+                <Card key={categoryIndex} className="hover:shadow-lg transition-shadow" data-testid={`card-category-${categoryIndex}`}>
+                  <CardHeader>
+                    <CardTitle className={`text-2xl flex items-center gap-3 ${category.color}`} data-testid={`heading-category-${categoryIndex}`}>
+                      <IconComponent className="w-8 h-8" />
+                      {category.category}
+                    </CardTitle>
+                    <CardDescription>
+                      Outstanding achievements and recognitions
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid gap-6">
+                      {category.achievements.map((achievement, achievementIndex) => (
+                        <div 
+                          key={achievementIndex} 
+                          className={`p-6 rounded-lg border transition-all hover:shadow-md ${
+                            achievement.highlight 
+                              ? 'bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 border-yellow-200 dark:border-yellow-700' 
+                              : 'bg-white dark:bg-gray-800'
+                          }`} 
+                          data-testid={`card-achievement-${categoryIndex}-${achievementIndex}`}
+                        >
+                          <div className="flex items-start justify-between mb-3">
+                            <h4 className="font-semibold text-lg text-gray-900 dark:text-white" data-testid={`text-title-${categoryIndex}-${achievementIndex}`}>
+                              {achievement.title}
+                            </h4>
+                            {achievement.highlight && (
+                              <Trophy className="w-5 h-5 text-yellow-500 flex-shrink-0 ml-2" />
+                            )}
+                          </div>
+                          
+                          <p className="text-gray-600 dark:text-gray-400 mb-3 leading-relaxed" data-testid={`text-description-${categoryIndex}-${achievementIndex}`}>
+                            {achievement.description}
+                          </p>
+                          
+                          <div className="flex flex-wrap items-center gap-3">
+                            <Badge 
+                              variant={achievement.highlight ? "default" : "secondary"} 
+                              className={achievement.highlight ? "bg-yellow-100 text-yellow-800 hover:bg-yellow-200" : ""}
+                              data-testid={`badge-student-${categoryIndex}-${achievementIndex}`}
+                            >
+                              {achievement.student}
+                            </Badge>
+                            
+                            <Badge variant="outline" data-testid={`badge-year-${categoryIndex}-${achievementIndex}`}>
+                              {achievement.year}
+                            </Badge>
+                            
+                            {achievement.details && (
+                              <Badge variant="secondary" className="text-xs" data-testid={`badge-details-${categoryIndex}-${achievementIndex}`}>
+                                {achievement.details}
+                              </Badge>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
-  const competitiveSuccesses = [
-    {
-      exam: "IIT JEE",
-      year: "2024",
-      topRank: "AIR 1,247",
-      qualified: "12 students",
-      student: "Rajesh Kumar"
-    },
+      {/* Achievement Highlights */}
+      <section className="py-16 bg-white dark:bg-gray-800">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-4xl mx-auto mb-12">
+            <h2 className="text-3xl font-bold mb-6" data-testid="heading-highlights">
+              Achievement Highlights
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400">
+              A testament to our commitment to academic excellence and holistic development
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            <Card className="text-center bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20">
+              <CardHeader>
+                <Trophy className="w-12 h-12 text-yellow-600 mx-auto mb-2" />
+                <CardTitle className="text-2xl text-yellow-700 dark:text-yellow-400">IIT Qualifications</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-3xl font-bold text-yellow-600 mb-2">4+</div>
+                <p className="text-gray-600 dark:text-gray-400">Students qualified for IITs in 2024</p>
+              </CardContent>
+            </Card>
+            
+            <Card className="text-center bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20">
+              <CardHeader>
+                <Medal className="w-12 h-12 text-blue-600 mx-auto mb-2" />
+                <CardTitle className="text-2xl text-blue-700 dark:text-blue-400">Olympiad Success</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-3xl font-bold text-blue-600 mb-2">State</div>
+                <p className="text-gray-600 dark:text-gray-400">Level toppers and winners</p>
+              </CardContent>
+            </Card>
+            
+            <Card className="text-center bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-900/20 dark:to-teal-900/20">
+              <CardHeader>
+                <Star className="w-12 h-12 text-green-600 mx-auto mb-2" />
+                <CardTitle className="text-2xl text-green-700 dark:text-green-400">Board Excellence</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-3xl font-bold text-green-600 mb-2">98%</div>
+                <p className="text-gray-600 dark:text-gray-400">Highest HSLC score achieved</p>
+              </CardContent>
+            </Card>
+            
+            <Card className="text-center bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20">
+              <CardHeader>
+                <Award className="w-12 h-12 text-purple-600 mx-auto mb-2" />
+                <CardTitle className="text-2xl text-purple-700 dark:text-purple-400">National Recognition</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-3xl font-bold text-purple-600 mb-2">AIR 5</div>
+                <p className="text-gray-600 dark:text-gray-400">UPSC All India Rank by alumnus</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+
     {
       exam: "NEET",
       year: "2024", 

@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { ChevronRight, User, Phone, Mail } from "lucide-react";
 import logoPath from "@assets/logo_1755410486904.jpg";
 import backgroundImage from "@assets/images (1)_1755410690920.jpg";
+import celebrationImage from "@assets/images (1)_1755417635891.jpg";
 import principalImage from "@assets/princi1_1755410744771.jpg";
 
 export default function Home() {
@@ -46,7 +47,7 @@ Request to parents/guardians:
       <section 
         className="relative bg-gradient-to-r from-blue-600 to-purple-700 text-white py-20 min-h-[70vh] flex items-center"
         style={{
-          backgroundImage: `linear-gradient(rgba(59, 130, 246, 0.8), rgba(147, 51, 234, 0.8)), url(${backgroundImage})`,
+          backgroundImage: `linear-gradient(rgba(59, 130, 246, 0.7), rgba(147, 51, 234, 0.7)), url(${celebrationImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'

@@ -1,0 +1,116 @@
+Structured Summary of “Achievements” Page
+
+The page highlights the college’s notable accomplishments across various academic competitions and exams:
+
+IISER Aptitude Test (IAT) 2025
+
+Physics Olympiad – ARJUNAV BORAH: All-Assam Physics Olympiad Center Topper (IX–X, 2024–25)
+
+Chemistry Olympiad
+
+NEET 2024
+
+Engineering 2024
+
+JEE Main 2025
+
+Qualified for IIT 2024
+
+AREEJEET ROY – IIT ISM Dhanbad
+
+BIBEK BARMAN – IIT BHU Varanasi
+
+SAMIRAN DAS – IIT Bombay
+
+JOUDI WARISA – IIT Guwahati
+
+Quiz Competition on the occasion of 78th Independence Day – ANURANAN SARMAH & SNIGDHA PARAN SAIKIA – 2nd Position (Class XI)
+
+Dr. Ambedkar National Merit Award – MINTU HAZARIKA, MRIGANKA DAS, SANGITA BAISHYA
+
+Science Model Competition 2024 (Nagaon District Level)
+
+DUKE BHUYAN BORA & BIKASH BARUAH – 1st Position (Class X-A)
+
+BARNA JYOTI SUT & RUPJYOTI SAIKIA – 2nd Position (Class X-C)
+
+Mentoring Programme: “Mukhya Mantrir Bigyan Pratibha Sandhan”
+
+HSLC & HS Final Examination Result 2024 – DEVASHREE KASHYAP – 3rd Rank (HSLC – 98%)
+
+JEE Main 2024
+
+AIR 5 UPSC 2022–23 – DR. MAYUR HAZARIKA
+
+Dhai Akhar Letter Writing Competition 2023 – ANURANAN SARMAH – All-Assam 1st Prize
+
+NSO, IEO & IMO 2023
+
+Mock Test 2023–24
+
+IIT 2023 – RISHAB UPADHYAY – IIST (Trivandrum) 2023 
+ramanujanjuniorcollege.com
+
+Prompt Template to Recreate “Achievements” Section
+Subject: Development Brief for “Achievements” Section — Ramanujan Junior College
+
+Objective:
+Produce an accurate, visually coherent “Achievements” section mirroring the structure and content of the existing page.
+
+Content Scope:
+- Prominently display each achievement category as a distinct section or card.
+- Include details where available:
+  - Title (e.g., “Physics Olympiad”)
+  - Notable achievers (e.g., names and titles or results)
+  - Context details (e.g., rank, stream, year, class, institution)
+
+Structure & Design Requirements:
+1. **Visual Hierarchy**:
+   - Use bold headings for each category.
+   - Subheadings or bullet lines for achievers and specifics.
+2. **Layout**:
+   - Consider a grid of cards or vertical list, responsive for mobile/desktop.
+   - Ensure semantic HTML (e.g., `<h3>`, `<ul>`, `<li>`) for accessibility.
+3. **Styling**:
+   - Clean typography, consistent spacing, and college branding.
+   - Optional icons or celebratory visuals (e.g., trophy, medal).
+4. **Data Modularity**:
+   - Structure content dynamically (e.g., JSON or CMS-friendly templates) to allow future updates without redesign.
+
+Content Sample:
+
+Physics Olympiad
+
+ARJUNAV BORAH – All-Assam Center Topper (Classes IX–X, 2024–25)
+
+Qualified for IIT 2024
+
+Areejeet Roy – IIT ISM Dhanbad
+
+Bibek Barman – IIT BHU Varanasi
+
+Samiran Das – IIT Bombay
+
+Joudi Warisa – IIT Guwahati
+
+AIR 5 UPSC 2022–23
+
+Dr. Mayur Hazarika
+
+Science Model Competition 2024 (Nagaon District Level)
+
+Duke Bhuyan Bora & Bikash Baruah – 1st Position (Class X-A)
+
+Barna Jyoti Sut & Rupjyoti Saikia – 2nd Position (Class X-C)
+
+
+Deliverables:
+- Responsive, clean HTML/CSS (with optional JS) layout for the entire “Achievements” section.
+- Well-commented templates for easy future maintenance/updating.
+- Design assets or style guidelines matching the college website’s aesthetics.
+
+Tone & Style:
+- Maintain consistency with institutional branding— polished, structured, and professional.
+
+Next Steps:
+Let me know if you’d like components adapted for mobile-first frameworks, dynamic loading, or CMS integration!
