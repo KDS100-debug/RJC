@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { ChevronRight, User, Phone, Mail } from "lucide-react";
 import logoPath from "@assets/logo_1755410486904.jpg";
+import backgroundImage from "@assets/images (1)_1755410690920.jpg";
 
 export default function Home() {
   const [showFullMessage, setShowFullMessage] = useState(false);
@@ -41,26 +42,39 @@ Request to parents/guardians:
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-20">
-        <div className="container mx-auto px-4">
+      <section 
+        className="relative bg-gradient-to-r from-blue-600 to-purple-700 text-white py-20 min-h-[70vh] flex items-center"
+        style={{
+          backgroundImage: `linear-gradient(rgba(59, 130, 246, 0.8), rgba(147, 51, 234, 0.8)), url(${backgroundImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center max-w-4xl mx-auto">
             <div className="flex justify-center mb-8">
               <img 
                 src={logoPath} 
                 alt="Ramanujan Junior College Logo" 
-                className="h-24 w-24 rounded-full object-cover shadow-lg"
+                className="h-24 w-24 rounded-full object-cover shadow-2xl border-4 border-white"
                 data-testid="img-hero-logo"
               />
             </div>
-            <h1 className="text-5xl font-bold mb-6" data-testid="heading-hero">
+            <h1 className="text-5xl font-bold mb-6 drop-shadow-lg" data-testid="heading-hero">
               Ramanujan Junior College
             </h1>
-            <p className="text-xl mb-8" data-testid="text-motto">
+            <p className="text-xl mb-8 drop-shadow-md" data-testid="text-motto">
               "Education, Development and Progress"
             </p>
-            <Badge variant="secondary" className="text-lg px-6 py-2">
+            <Badge variant="secondary" className="text-lg px-6 py-2 bg-white text-blue-700 shadow-lg">
               Established 2005
             </Badge>
+            <div className="mt-8">
+              <p className="text-lg opacity-90 max-w-2xl mx-auto">
+                Celebrating success, building futures, and nurturing excellence in every student
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -115,11 +129,23 @@ Request to parents/guardians:
         </div>
       </section>
 
+      {/* Achievement Highlight Banner */}
+      <section className="py-12 bg-gradient-to-r from-green-600 to-teal-600 text-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold mb-4">Our Success Story</h2>
+            <p className="text-lg opacity-90">
+              Witnessing the pride and joy of our achievers - from academic excellence to competitive exam success
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Quick Info Cards */}
       <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <Card data-testid="card-streams">
+            <Card data-testid="card-streams" className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <CardTitle className="text-xl">Academic Streams</CardTitle>
               </CardHeader>
@@ -134,7 +160,7 @@ Request to parents/guardians:
               </CardContent>
             </Card>
 
-            <Card data-testid="card-facilities">
+            <Card data-testid="card-facilities" className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <CardTitle className="text-xl">Key Facilities</CardTitle>
               </CardHeader>
@@ -148,7 +174,7 @@ Request to parents/guardians:
               </CardContent>
             </Card>
 
-            <Card data-testid="card-achievements">
+            <Card data-testid="card-achievements" className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <CardTitle className="text-xl">Achievements</CardTitle>
               </CardHeader>
