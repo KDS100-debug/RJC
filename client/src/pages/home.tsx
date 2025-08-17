@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { ChevronRight, User, Phone, Mail } from "lucide-react";
 import logoPath from "@assets/logo_1755410486904.jpg";
 import backgroundImage from "@assets/images (1)_1755410690920.jpg";
+import principalImage from "@assets/princi1_1755410744771.jpg";
 
 export default function Home() {
   const [showFullMessage, setShowFullMessage] = useState(false);
@@ -88,9 +89,12 @@ Request to parents/guardians:
                 Principal's Desk
               </CardTitle>
               <div className="flex justify-center mb-6">
-                <div className="w-32 h-32 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center">
-                  <User size={48} className="text-gray-500" data-testid="img-principal" />
-                </div>
+                <img 
+                  src={principalImage} 
+                  alt="Mr. Dilip Kumar Borah - Principal" 
+                  className="w-32 h-32 rounded-full object-cover shadow-lg border-4 border-white"
+                  data-testid="img-principal"
+                />
               </div>
               <div className="flex justify-center items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
                 <span data-testid="text-principal-name">Mr. Dilip Kumar Borah</span>

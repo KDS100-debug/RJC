@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { GraduationCap, Target, Users, Award } from "lucide-react";
 import logoPath from "@assets/logo_1755410486904.jpg";
+import principalImage from "@assets/princi1_1755410744771.jpg";
 
 export default function About() {
   const objectives = [
@@ -135,14 +136,23 @@ export default function About() {
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
               {managementTeam.map((member, index) => (
-                <Card key={index} data-testid={`card-member-${index}`}>
-                  <CardHeader>
-                    <CardTitle className="text-lg" data-testid={`text-member-name-${index}`}>
-                      {member.name}
-                    </CardTitle>
-                    <CardDescription data-testid={`text-member-position-${index}`}>
-                      {member.position}
-                    </CardDescription>
+                <Card key={index} data-testid={`card-member-${index}`} className="relative">
+                  <CardHeader className="flex flex-row items-center space-y-0 space-x-4">
+                    {index === 0 && (
+                      <img 
+                        src={principalImage} 
+                        alt="Mr. Dilip Kumar Borah" 
+                        className="w-16 h-16 rounded-full object-cover shadow-md"
+                      />
+                    )}
+                    <div className="flex-1">
+                      <CardTitle className="text-lg" data-testid={`text-member-name-${index}`}>
+                        {member.name}
+                      </CardTitle>
+                      <CardDescription data-testid={`text-member-position-${index}`}>
+                        {member.position}
+                      </CardDescription>
+                    </div>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-2">

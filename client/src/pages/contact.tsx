@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { MapPin, Phone, Mail, Clock, User } from "lucide-react";
+import principalImage from "@assets/princi1_1755410744771.jpg";
 
 export default function Contact() {
   const contactInfo = [
@@ -182,13 +183,23 @@ export default function Contact() {
               {keyPersonnel.map((person, index) => (
                 <Card key={index} data-testid={`card-person-${index}`}>
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-lg" data-testid={`text-person-name-${index}`}>
-                      <User className="h-5 w-5 text-blue-600" />
-                      {person.name}
+                    <CardTitle className="flex items-center gap-3 text-lg" data-testid={`text-person-name-${index}`}>
+                      {index === 0 ? (
+                        <img 
+                          src={principalImage} 
+                          alt="Mr. Dilip Kumar Borah" 
+                          className="h-12 w-12 rounded-full object-cover"
+                        />
+                      ) : (
+                        <User className="h-5 w-5 text-blue-600" />
+                      )}
+                      <div>
+                        <div>{person.name}</div>
+                        <CardDescription data-testid={`text-person-position-${index}`}>
+                          {person.position}
+                        </CardDescription>
+                      </div>
                     </CardTitle>
-                    <CardDescription data-testid={`text-person-position-${index}`}>
-                      {person.position}
-                    </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-2">
